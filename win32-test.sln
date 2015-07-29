@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Express 2013 for Windows Desktop
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "win32-test", "win32-test\win32-test.vcxproj", "{8D7F6D46-588B-46E4-86AA-294F536C21DE}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "util", "util\util.vcxproj", "{AD3508C6-8AC8-45A0-9C56-42AB65DA6A53}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{DBDD38B5-A568-440A-AA72-2D106BD3FDAD}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "automated-tests", "tests\automated-tests\automated-tests.vcxproj", "{39B6D796-6274-4F94-9663-53DA74F1F89D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8D7F6D46-588B-46E4-86AA-294F536C21DE}.Debug|Win32.ActiveCfg = Debug|Win32
+		{8D7F6D46-588B-46E4-86AA-294F536C21DE}.Debug|Win32.Build.0 = Debug|Win32
+		{8D7F6D46-588B-46E4-86AA-294F536C21DE}.Release|Win32.ActiveCfg = Release|Win32
+		{8D7F6D46-588B-46E4-86AA-294F536C21DE}.Release|Win32.Build.0 = Release|Win32
+		{AD3508C6-8AC8-45A0-9C56-42AB65DA6A53}.Debug|Win32.ActiveCfg = Debug|Win32
+		{AD3508C6-8AC8-45A0-9C56-42AB65DA6A53}.Debug|Win32.Build.0 = Debug|Win32
+		{AD3508C6-8AC8-45A0-9C56-42AB65DA6A53}.Release|Win32.ActiveCfg = Release|Win32
+		{AD3508C6-8AC8-45A0-9C56-42AB65DA6A53}.Release|Win32.Build.0 = Release|Win32
+		{39B6D796-6274-4F94-9663-53DA74F1F89D}.Debug|Win32.ActiveCfg = Debug|Win32
+		{39B6D796-6274-4F94-9663-53DA74F1F89D}.Debug|Win32.Build.0 = Debug|Win32
+		{39B6D796-6274-4F94-9663-53DA74F1F89D}.Release|Win32.ActiveCfg = Release|Win32
+		{39B6D796-6274-4F94-9663-53DA74F1F89D}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{39B6D796-6274-4F94-9663-53DA74F1F89D} = {DBDD38B5-A568-440A-AA72-2D106BD3FDAD}
+	EndGlobalSection
+EndGlobal
