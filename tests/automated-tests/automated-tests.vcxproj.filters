@@ -2,19 +2,24 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Infrastructure">
-      <UniqueIdentifier>{34c26b38-28cb-4ae8-bdfa-d68d64bc0adb}</UniqueIdentifier>
+      <UniqueIdentifier>{c579f6a8-48a4-4fc5-96c2-dee7807fa06a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Tests">
+      <UniqueIdentifier>{426a7ab8-2646-42ab-8147-f5b89a30a89f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
       <Filter>Infrastructure</Filter>
     </ClInclude>
-    <ClInclude Include="Application.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
       <Filter>Infrastructure</Filter>
     </ClCompile>
-    <ClCompile Include="Application.cpp" />
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Tests\AppTest.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

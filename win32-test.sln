@@ -4,6 +4,10 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "win32-test", "win32-test\win32-test.vcxproj", "{8D7F6D46-588B-46E4-86AA-294F536C21DE}"
+	ProjectSection(ProjectDependencies) = postProject
+		{78F47CA1-AF44-4105-BB94-6750E6CD375E} = {78F47CA1-AF44-4105-BB94-6750E6CD375E}
+		{AD3508C6-8AC8-45A0-9C56-42AB65DA6A53} = {AD3508C6-8AC8-45A0-9C56-42AB65DA6A53}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "util", "util\util.vcxproj", "{AD3508C6-8AC8-45A0-9C56-42AB65DA6A53}"
 EndProject
@@ -18,6 +22,14 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3rd-party", "3rd-party", "{05ADC77E-4309-45DF-A092-A7C4B80F7055}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "gtest", "3rd-party\gtest\gtest.vcxproj", "{8B9468D4-D952-4369-8DCD-0A89C0183CD1}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "automated-tests", "tests\automated-tests\automated-tests.vcxproj", "{CCFE5EEE-01E6-417F-A6F6-8BC3A780E1EF}"
+	ProjectSection(ProjectDependencies) = postProject
+		{8D7F6D46-588B-46E4-86AA-294F536C21DE} = {8D7F6D46-588B-46E4-86AA-294F536C21DE}
+		{78F47CA1-AF44-4105-BB94-6750E6CD375E} = {78F47CA1-AF44-4105-BB94-6750E6CD375E}
+		{AD3508C6-8AC8-45A0-9C56-42AB65DA6A53} = {AD3508C6-8AC8-45A0-9C56-42AB65DA6A53}
+		{8B9468D4-D952-4369-8DCD-0A89C0183CD1} = {8B9468D4-D952-4369-8DCD-0A89C0183CD1}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +53,10 @@ Global
 		{8B9468D4-D952-4369-8DCD-0A89C0183CD1}.Debug|Win32.Build.0 = Debug|Win32
 		{8B9468D4-D952-4369-8DCD-0A89C0183CD1}.Release|Win32.ActiveCfg = Release|Win32
 		{8B9468D4-D952-4369-8DCD-0A89C0183CD1}.Release|Win32.Build.0 = Release|Win32
+		{CCFE5EEE-01E6-417F-A6F6-8BC3A780E1EF}.Debug|Win32.ActiveCfg = Debug|Win32
+		{CCFE5EEE-01E6-417F-A6F6-8BC3A780E1EF}.Debug|Win32.Build.0 = Debug|Win32
+		{CCFE5EEE-01E6-417F-A6F6-8BC3A780E1EF}.Release|Win32.ActiveCfg = Release|Win32
+		{CCFE5EEE-01E6-417F-A6F6-8BC3A780E1EF}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -48,5 +64,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{78F47CA1-AF44-4105-BB94-6750E6CD375E} = {DBDD38B5-A568-440A-AA72-2D106BD3FDAD}
 		{8B9468D4-D952-4369-8DCD-0A89C0183CD1} = {05ADC77E-4309-45DF-A092-A7C4B80F7055}
+		{CCFE5EEE-01E6-417F-A6F6-8BC3A780E1EF} = {DBDD38B5-A568-440A-AA72-2D106BD3FDAD}
 	EndGlobalSection
 EndGlobal

@@ -23,10 +23,15 @@ std::wstring Text::Convert::wcsFromUtf(const std::string &str)
 
     std::wstring out(size, 0);
 
-    ::MultiByteToWideChar(
-        CP_UTF8, 0,
-        &str[0], str.size(),
-        &out[0], out.size());
+    if (size)
+    {
+        size = ::MultiByteToWideChar(
+            CP_UTF8, 0,
+            &str[0], str.size(),
+            &out[0], out.size());
+
+        assert(size);
+    }
 
     return std::move(out);
 }
@@ -48,11 +53,16 @@ std::string Text::Convert::utfFromWcs(const std::wstring &str)
 
     std::string out(size, 0);
 
-    ::WideCharToMultiByte(
-        CP_UTF8, 0,
-        &str[0], str.size(),
-        &out[0], out.size(),
-        nullptr, nullptr);
+    if (size)
+    {
+        size = ::WideCharToMultiByte(
+            CP_UTF8, 0,
+            &str[0], str.size(),
+            &out[0], out.size(),
+            nullptr, nullptr);
+
+        assert(size);
+    }
 
     return std::move(out);
 }
