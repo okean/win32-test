@@ -6,6 +6,9 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>Infrastructure</Filter>
     </ClCompile>
+    <ClCompile Include="Win\GUI\Window.cpp">
+      <Filter>Win\GUI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Event.h" />
@@ -13,10 +16,19 @@
     <ClInclude Include="stdafx.h">
       <Filter>Infrastructure</Filter>
     </ClInclude>
+    <ClInclude Include="Win\GUI\Window.h">
+      <Filter>Win\GUI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Infrastructure">
       <UniqueIdentifier>{e41a9af4-8e1c-48a4-bd03-8cadb80d0db3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Win">
+      <UniqueIdentifier>{05de36bf-349e-4e33-85f7-776421c64e31}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Win\GUI">
+      <UniqueIdentifier>{6aa622df-eec7-468e-95c7-dc4ba5df6834}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

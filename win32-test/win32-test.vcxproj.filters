@@ -4,17 +4,35 @@
     <Filter Include="Infrastructure">
       <UniqueIdentifier>{34c26b38-28cb-4ae8-bdfa-d68d64bc0adb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Notepad">
+      <UniqueIdentifier>{2da808b2-d851-49b8-aea9-0a2521071210}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Notepad\GUI">
+      <UniqueIdentifier>{f911675a-712f-47b4-94fd-c4ac01f5a94f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
       <Filter>Infrastructure</Filter>
     </ClInclude>
     <ClInclude Include="Application.h" />
+    <ClInclude Include="Notepad\GUI\MainWindow.h">
+      <Filter>Notepad\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Notepad\NotepadApp.h">
+      <Filter>Notepad</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
       <Filter>Infrastructure</Filter>
     </ClCompile>
     <ClCompile Include="Application.cpp" />
+    <ClCompile Include="Notepad\GUI\MainWindow.cpp">
+      <Filter>Notepad\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Notepad\NotepadApp.cpp">
+      <Filter>Notepad</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

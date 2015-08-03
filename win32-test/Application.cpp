@@ -1,11 +1,7 @@
 #include "stdafx.h"
 #include "Application.h"
-#include <Windows.h>
-#include <ppltasks.h>
 
 using namespace WIN32TEST;
-
-using namespace concurrency;
 
 Application::Application()
 {
@@ -13,13 +9,6 @@ Application::Application()
 
 Application::~Application()
 {
-}
-
-// class helpers
-
-void Application::launchApp()
-{
-    Process process = launch();
 }
 
 // internal static helpers
