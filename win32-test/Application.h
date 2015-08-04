@@ -25,13 +25,17 @@ private: // internal typedef
 
 public: // class helpers
     template<class T>
-    static void launchApp(OnLaunched<T> onLaunched)
+    static void launchApp(
+        const std::string &className,
+        const std::string &title,
+        SHELLEXECUTEINFO *param, 
+        OnLaunched<T> onLaunched)
     {
         concurrency::create_task([=]
         {
-            Process process = launch();
+            Process process = launch(param);
 
-            if (HWND wnd = Window::waitFor("", "Untitled - Notepad", 20000))
+            if (HWND wnd = Window::waitFor(className, title, 20000))
             {
                 onLaunched(std::make_shared<T>(wnd, process), "");
             }
@@ -43,7 +47,7 @@ public: // class helpers
     }
 
 private: // internal static helpers
-    static Process launch();
+    static Process launch(SHELLEXECUTEINFO *param);
 };
 
 } // namespace WIN32TEST

@@ -18,7 +18,7 @@ Window::~Window()
 HWND Window::waitFor(
     const std::string &className,
     const std::string &title,
-    unsigned long timeout)
+    size_t timeout)
 {
     WindowInfo wnd;
 

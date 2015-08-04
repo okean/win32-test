@@ -17,8 +17,13 @@ public:  // public typdefs
     typedef Notepad::GUI::MainWindowPtr                                 MainWindowPtr;
     typedef std::function <void(MainWindowPtr, const std::string &)>    OnLaunched;
 
-public: // class helpers
+public:  // class helpers
     static void launch(OnLaunched onLaunched);
+
+private: // internal static helpers
+    static SHELLEXECUTEINFO & param();
+    static const std::string & title();
+    static const std::string & className();
 };
 
 } // namespace Notepad

@@ -21,7 +21,7 @@ public:  // class interface
     static HWND waitFor(
         const std::string &className,
         const std::string &title,
-        unsigned long timeout);
+        size_t timeout);
 
 private: // internal structs
     struct WindowInfo
