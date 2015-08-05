@@ -18,7 +18,7 @@ NotepadApp::~NotepadApp()
 
 void NotepadApp::launch(OnLaunched onLaunched)
 {
-    launchApp<MainWindow>(className(), title(), &param(), onLaunched);
+    launchApp<MainWindow>(className(), "", &param(), onLaunched);
 }
 
 // internal static helpers

@@ -7,6 +7,8 @@
 
 namespace WIN32TEST {
 
+namespace { const size_t timeout = 20000; }
+
 class Application
 {
 public:
@@ -35,7 +37,7 @@ public: // class helpers
         {
             Process process = launch(param);
 
-            if (HWND wnd = Window::waitFor(className, title, 20000))
+            if (HWND wnd = Window::waitFor(className, title, timeout))
             {
                 onLaunched(std::make_shared<T>(wnd, process), "");
             }

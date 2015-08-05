@@ -22,6 +22,7 @@ public:  // class interface
         const std::string &className,
         const std::string &title,
         size_t timeout);
+    static const std::string & dialogClass();
 
 private: // internal structs
     struct WindowInfo

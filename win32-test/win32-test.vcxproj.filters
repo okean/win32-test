@@ -22,6 +22,9 @@
     <ClInclude Include="Notepad\NotepadApp.h">
       <Filter>Notepad</Filter>
     </ClInclude>
+    <ClInclude Include="Notepad\GUI\SaveAsWindow.h">
+      <Filter>Notepad\GUI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -33,6 +36,9 @@
     </ClCompile>
     <ClCompile Include="Notepad\NotepadApp.cpp">
       <Filter>Notepad</Filter>
+    </ClCompile>
+    <ClCompile Include="Notepad\GUI\SaveAsWindow.cpp">
+      <Filter>Notepad\GUI</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -19,6 +19,9 @@
     <ClInclude Include="Win\GUI\Window.h">
       <Filter>Win\GUI</Filter>
     </ClInclude>
+    <ClInclude Include="Win\GUI\Control.hpp">
+      <Filter>Win\GUI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Infrastructure">

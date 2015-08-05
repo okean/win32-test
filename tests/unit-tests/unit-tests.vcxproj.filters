@@ -18,10 +18,10 @@
       <Filter>Infrastructure</Filter>
     </ClCompile>
     <ClCompile Include="Main.cpp" />
-    <ClCompile Include="Tests\EventTest.cpp">
+    <ClCompile Include="Tests\TestEvent.cpp">
       <Filter>Tests</Filter>
     </ClCompile>
-    <ClCompile Include="Tests\TextTest.cpp">
+    <ClCompile Include="Tests\TestText.cpp">
       <Filter>Tests</Filter>
     </ClCompile>
   </ItemGroup>

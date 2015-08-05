@@ -13,12 +13,14 @@
   <ItemGroup>
     <ClInclude Include="Application.h" />
     <ClInclude Include="Notepad\GUI\MainWindow.h" />
+    <ClInclude Include="Notepad\GUI\SaveAsWindow.h" />
     <ClInclude Include="Notepad\NotepadApp.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="Notepad\GUI\MainWindow.cpp" />
+    <ClCompile Include="Notepad\GUI\SaveAsWindow.cpp" />
     <ClCompile Include="Notepad\NotepadApp.cpp" />
     <ClCompile Include="stdafx.cpp" />
   </ItemGroup>

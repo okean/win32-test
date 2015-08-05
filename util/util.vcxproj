@@ -20,6 +20,7 @@
     <ClInclude Include="Event.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Text.h" />
+    <ClInclude Include="Win\GUI\Control.hpp" />
     <ClInclude Include="Win\GUI\Window.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

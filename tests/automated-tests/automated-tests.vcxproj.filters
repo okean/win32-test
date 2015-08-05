@@ -18,7 +18,7 @@
       <Filter>Infrastructure</Filter>
     </ClCompile>
     <ClCompile Include="Main.cpp" />
-    <ClCompile Include="Tests\AppTest.cpp">
+    <ClCompile Include="Tests\TestNotepad.cpp">
       <Filter>Tests</Filter>
     </ClCompile>
   </ItemGroup>

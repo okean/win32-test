@@ -20,12 +20,12 @@ HWND Window::waitFor(
     const std::string &title,
     size_t timeout)
 {
-    WindowInfo wnd;
+    WindowInfo wnd{};
 
     wnd.className	= Text::Convert::wcsFromUtf(className);
     wnd.title		= Text::Convert::wcsFromUtf(title);
 
-    for (DWORD stop = ::GetTickCount() + timeout; stop > ::GetTickCount(); ::Sleep(1000))
+    for (DWORD stop = ::GetTickCount() + timeout; stop > ::GetTickCount(); ::Sleep(2))
     {
         ::EnumWindows(&enumWindowsProc, reinterpret_cast<LPARAM>(&wnd));
 
@@ -36,6 +36,13 @@ HWND Window::waitFor(
     }
 
     return HWND{};
+}
+
+const std::string & Window::dialogClass()
+{
+    static const std::string dialogClass{ "#32770" };
+
+    return dialogClass;
 }
 
 // internal helpers
