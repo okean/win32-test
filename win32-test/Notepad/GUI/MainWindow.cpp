@@ -12,6 +12,7 @@ namespace { const size_t timeout = 60000; }
 MainWindow::MainWindow(HWND hwnd, HANDLE process)
     : Window(hwnd)
     , _process{ process }
+    , _document(get<Edit>(Document))
 {
 }
 
@@ -38,4 +39,23 @@ void MainWindow::saveAs(const std::string &/*path*/, OnSaved onSaved)
             onSaved(false, "Could not find '" + title + "' window");
         }
     });
+}
+
+
+void MainWindow::write(const std::string &text)
+{
+    _document.setText(text);
+}
+
+
+std::string MainWindow::read()
+{
+    return _document.getText();
+}
+
+void MainWindow::exit()
+{
+    PostMessage(WM_COMMAND, MAKEWPARAM(Exit, 0), 0);
+
+    ::WaitForSingleObject(_process, INFINITE);
 }

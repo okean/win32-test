@@ -17,6 +17,13 @@ public:
 public:  // exposing some wtl attributes
     using ATL::CWindow::operator HWND; 
 
+public:  //interface
+    template <class Control>
+    Control get(int id)
+    {
+        return Control(getById(id));
+    };
+
 public:  // class interface
     static HWND waitFor(
         const std::string &className,
@@ -34,6 +41,10 @@ private: // internal structs
 
 private: // internal class helpers
     static BOOL CALLBACK enumWindowsProc(HWND hwnd, LPARAM lparam);
+
+private: // internal helpers
+    bool waitUntil(int ctrlId, size_t timeout);
+    HWND getById(int ctrlId);
 };
 
 } // GUI namespace

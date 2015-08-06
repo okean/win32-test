@@ -1,6 +1,7 @@
 #pragma once
 
 #include <util/Win/GUI/Window.h>
+#include <util/Win/GUI/Edit.h>
 #include <memory>
 #include <functional>
 
@@ -16,23 +17,29 @@ public:
 
 public:  // public typedefs
     typedef std::function<void(bool, const std::string &)>  OnCondition;
-    typedef OnCondition     OnSaved;
+    typedef OnCondition                                     OnSaved;
+    typedef Util::Win::GUI::Edit                            Edit;
 
 public:  // interface
     void saveAs(const std::string &path, OnSaved);
+    void write(const std::string &text);
+    std::string read();
+    void exit();
 
 private: // private structs
     enum CtrlsId
     {
-        New     = 1,
-        Open    = 2,
-        Save    = 3,
-        SaveAs  = 4,
-        Exit    = 7
+        New         = 1,
+        Open        = 2,
+        Save        = 3,
+        SaveAs      = 4,
+        Exit        = 7,
+        Document    = 15
     };
 
 private: // member variables
-    HANDLE _process;
+    HANDLE  _process;
+    Edit    _document;
 };
 
 typedef std::shared_ptr<MainWindow> MainWindowPtr;

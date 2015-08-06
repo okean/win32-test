@@ -5,6 +5,8 @@
 using namespace Util;
 using namespace Util::Win::GUI;
 
+namespace { const size_t timeout = 20000; }
+
 Window::Window(HWND hwnd) : ATL::CWindow(hwnd)
 {
 }
@@ -78,4 +80,30 @@ BOOL CALLBACK Window::enumWindowsProc(HWND hwnd, LPARAM lparam)
     }
 
     return TRUE;
+}
+
+// internal helper
+
+bool Window::waitUntil(int ctrlId, size_t timeout)
+{
+    for (DWORD stop = ::GetTickCount() + timeout; stop > ::GetTickCount(); ::Sleep(2))
+    {
+        if (GetDlgItem(ctrlId))
+        {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+HWND Window::getById(int ctrlId)
+{
+    if (!waitUntil(ctrlId, timeout))
+    {
+        throw std::exception(
+            ("Control with id '" + std::to_string(ctrlId) + "' not found").c_str());
+    }
+
+    return GetDlgItem(ctrlId);
 }

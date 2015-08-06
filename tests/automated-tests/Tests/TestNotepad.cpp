@@ -28,6 +28,19 @@ TEST(Notepad, Initialization)
     EXPECT_TRUE(event.wait(timeout));
 }
 
+TEST(Notepad, WriteReadText)
+{
+    ASSERT_NE(nullptr, mainWindow);
+
+    const std::string input{ "Some text" };
+
+    mainWindow->write(input);
+
+    const std::string text{ mainWindow->read() };
+
+    EXPECT_EQ(input, text);
+}
+
 TEST(Notepad, SaveAs)
 {
     Event event;
@@ -41,4 +54,11 @@ TEST(Notepad, SaveAs)
     });
 
     EXPECT_TRUE(event.wait(timeout));
+}
+
+TEST(Notepad, Exit)
+{
+    ASSERT_NE(nullptr, mainWindow);
+
+    mainWindow->exit();
 }
