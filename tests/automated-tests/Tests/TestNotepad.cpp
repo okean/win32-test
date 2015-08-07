@@ -60,5 +60,5 @@ TEST(Notepad, Exit)
 {
     ASSERT_NE(nullptr, mainWindow);
 
-    mainWindow->exit();
+    mainWindow->exitWithoutSaving();
 }

@@ -47,6 +47,13 @@ const std::string & Window::dialogClass()
     return dialogClass;
 }
 
+// interface
+
+Window::operator bool() const
+{
+    return m_hWnd != nullptr;
+}
+
 // internal helpers
 
 BOOL CALLBACK Window::enumWindowsProc(HWND hwnd, LPARAM lparam)
@@ -82,6 +89,32 @@ BOOL CALLBACK Window::enumWindowsProc(HWND hwnd, LPARAM lparam)
     return TRUE;
 }
 
+HWND Window::getRecursive(
+    HWND parent,
+    const wchar_t *className,
+    const wchar_t *title)
+{
+    HWND hwnd = ::FindWindowEx(parent, nullptr, className, title);
+
+    if (hwnd)
+    {
+        return hwnd;
+    }
+
+    for (HWND h = ::FindWindowEx(parent, nullptr, nullptr, nullptr); 
+        h != nullptr; h = ::GetNextWindow(h, GW_HWNDNEXT))
+    {
+        hwnd = getRecursive(h, className, title);
+
+        if (hwnd)
+        {
+            return hwnd;
+        }
+    }
+
+    return HWND{};
+}
+
 // internal helper
 
 bool Window::waitUntil(int ctrlId, size_t timeout)
@@ -106,4 +139,20 @@ HWND Window::getById(int ctrlId)
     }
 
     return GetDlgItem(ctrlId);
+}
+
+HWND Window::getByText(const std::string &text)
+{
+    for (DWORD stop = ::GetTickCount() + timeout; stop > ::GetTickCount(); ::Sleep(2))
+    {
+        HWND hwnd = getRecursive(
+            *this,
+            nullptr,
+            Text::Convert::wcsFromUtf(text).c_str());
+
+        if (hwnd)
+        {
+            return hwnd;
+        }
+    }
 }

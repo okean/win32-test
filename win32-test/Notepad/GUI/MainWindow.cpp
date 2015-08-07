@@ -1,5 +1,6 @@
 #include "MainWindow.h"
 #include "SaveAsWindow.h"
+#include "SaveChangesWindow.h"
 #include <ppltasks.h>
 
 using namespace WIN32TEST::Notepad::GUI;
@@ -24,10 +25,10 @@ MainWindow::~MainWindow()
 
 void MainWindow::saveAs(const std::string &/*path*/, OnSaved onSaved)
 {
-    PostMessage(WM_COMMAND, MAKEWPARAM(SaveAs, 0), 0);
-
     create_task([=]() // go async
     {
+        PostMessage(WM_COMMAND, MAKEWPARAM(SaveAs, 0), 0);
+
         const std::string title{ "Save As" };
 
         if (SaveAsWindow wnd = Window::waitFor(Window::dialogClass(), title, timeout))
@@ -53,9 +54,19 @@ std::string MainWindow::read()
     return _document.getText();
 }
 
-void MainWindow::exit()
+void MainWindow::exitWithoutSaving()
 {
-    PostMessage(WM_COMMAND, MAKEWPARAM(Exit, 0), 0);
+    create_task([=]() // go async
+    {
+        PostMessage(WM_COMMAND, MAKEWPARAM(Exit, 0), 0);
+
+        const std::string title{ "Notepad" };
+
+        if (SaveChangesWindow wnd = Window::waitFor(Window::dialogClass(), title, timeout))
+        {
+            wnd.dontSave();
+        }
+    });
 
     ::WaitForSingleObject(_process, INFINITE);
 }

@@ -12,6 +12,9 @@
     <ClCompile Include="Win\GUI\Edit.cpp">
       <Filter>Win\GUI</Filter>
     </ClCompile>
+    <ClCompile Include="Win\GUI\Button.cpp">
+      <Filter>Win\GUI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Event.h" />
@@ -26,6 +29,9 @@
       <Filter>Win\GUI</Filter>
     </ClInclude>
     <ClInclude Include="Win\GUI\Edit.h">
+      <Filter>Win\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Win\GUI\Button.h">
       <Filter>Win\GUI</Filter>
     </ClInclude>
   </ItemGroup>

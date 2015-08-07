@@ -18,7 +18,9 @@ void Edit::setText(const std::string &value)
 {
     const std::wstring text { Text::Convert::wcsFromUtf(value) };
     
-    SendMessage(WM_SETTEXT, 0, reinterpret_cast<LPARAM>(text.c_str()));
+    SendMessage(EM_SETSEL, 0, 0L);
+
+    SendMessage(EM_REPLACESEL, 1, reinterpret_cast<LPARAM>(text.c_str()));
 }
 
 std::string Edit::getText()

@@ -24,7 +24,7 @@ public:  // interface
     void saveAs(const std::string &path, OnSaved);
     void write(const std::string &text);
     std::string read();
-    void exit();
+    void exitWithoutSaving();
 
 private: // private structs
     enum CtrlsId

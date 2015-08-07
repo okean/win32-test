@@ -11,7 +11,7 @@ namespace Win {
 namespace GUI {
 
 template <class AtlControl>
-class Control : public AtlControl
+class Control : protected AtlControl
 {
 public:
     Control(HWND hwnd) : AtlControl(hwnd) {}
