@@ -5,7 +5,7 @@ using namespace Util::Win::GUI;
 
 SaveChangesWindow::SaveChangesWindow(HWND hwnd)
     : Window(hwnd),
-    _dontSaveBtn(get<Button>("Do&n't Save"))
+    _dontSaveBtn(get<Button>(ctrlIdToString(dontSaveTxt)))
 {
 }
 
@@ -18,4 +18,17 @@ SaveChangesWindow::~SaveChangesWindow()
 void SaveChangesWindow::dontSave()
 {
     _dontSaveBtn.click();
+}
+
+// internal helpers
+
+const std::string SaveChangesWindow::ctrlIdToString(CtrlsId id)
+{
+    switch (id)
+    {
+    case CtrlsId::dontSaveTxt:
+        return "Do&n't Save";
+    }
+
+    throw std::exception("Invalid control id");
 }

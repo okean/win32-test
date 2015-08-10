@@ -27,17 +27,19 @@ HWND Window::waitFor(
     wnd.className	= Text::Convert::wcsFromUtf(className);
     wnd.title		= Text::Convert::wcsFromUtf(title);
 
-    for (DWORD stop = ::GetTickCount() + timeout; stop > ::GetTickCount(); ::Sleep(2))
+    waitUntil(timeout, [&]()
     {
         ::EnumWindows(&enumWindowsProc, reinterpret_cast<LPARAM>(&wnd));
 
         if (wnd.hwnd)
         {
-            return wnd.hwnd;
+            return true; // Stop
         }
-    }
 
-    return HWND{};
+        return false; // Continue looping
+    });
+
+    return wnd.hwnd;
 }
 
 const std::string & Window::dialogClass()
@@ -54,7 +56,17 @@ Window::operator bool() const
     return m_hWnd != nullptr;
 }
 
-// internal helpers
+void Window::clickOk()
+{
+    clickBtn(IDOK);
+}
+
+void Window::clickCancel()
+{
+    clickBtn(IDCANCEL);
+}
+
+// internal class helpers
 
 BOOL CALLBACK Window::enumWindowsProc(HWND hwnd, LPARAM lparam)
 {
@@ -101,8 +113,9 @@ HWND Window::getRecursive(
         return hwnd;
     }
 
-    for (HWND h = ::FindWindowEx(parent, nullptr, nullptr, nullptr); 
-        h != nullptr; h = ::GetNextWindow(h, GW_HWNDNEXT))
+    for (HWND h = ::FindWindowEx(parent, nullptr, nullptr, nullptr)
+        ; h != nullptr
+        ; h = ::GetNextWindow(h, GW_HWNDNEXT))
     {
         hwnd = getRecursive(h, className, title);
 
@@ -115,24 +128,41 @@ HWND Window::getRecursive(
     return HWND{};
 }
 
-// internal helper
-
-bool Window::waitUntil(int ctrlId, size_t timeout)
+void Window::waitUntil(size_t timeout, std::function<bool()> onStep)
 {
     for (DWORD stop = ::GetTickCount() + timeout; stop > ::GetTickCount(); ::Sleep(2))
     {
-        if (GetDlgItem(ctrlId))
+        if (onStep())
         {
-            return true;
+            break;
         }
     }
+}
 
-    return false;
+// internal helpers
+
+bool Window::waitUntilCreate(int ctrlId, size_t timeout)
+{
+    bool found = false;
+
+    waitUntil(timeout, [&]()
+    {
+        if (GetDlgItem(ctrlId))
+        {
+            found = true;
+
+            return true; // Stop
+        }
+
+        return false; // Continue looping
+    });
+
+    return found;
 }
 
 HWND Window::getById(int ctrlId)
 {
-    if (!waitUntil(ctrlId, timeout))
+    if (!waitUntilCreate(ctrlId, timeout))
     {
         throw std::exception(
             ("Control with id '" + std::to_string(ctrlId) + "' not found").c_str());
@@ -143,16 +173,37 @@ HWND Window::getById(int ctrlId)
 
 HWND Window::getByText(const std::string &text)
 {
-    for (DWORD stop = ::GetTickCount() + timeout; stop > ::GetTickCount(); ::Sleep(2))
+    HWND hwnd{};
+
+    waitUntil(timeout, [&]()
     {
-        HWND hwnd = getRecursive(
+        HWND control = getRecursive(
             *this,
             nullptr,
             Text::Convert::wcsFromUtf(text).c_str());
 
-        if (hwnd)
+        if (control)
         {
-            return hwnd;
+            hwnd = control;
+
+            return true; // Stop
         }
+
+        return false; // Continue looping
+    });
+
+    return hwnd;
+}
+
+// protected helpers
+
+void Window::clickBtn(int id)
+{
+    if (CWindow btn = GetDlgItem(id))
+    {
+        PostMessage(
+            WM_COMMAND,
+            MAKEWPARAM(id, BN_CLICKED),
+            reinterpret_cast<LPARAM>(btn.m_hWnd));
     }
 }

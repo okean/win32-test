@@ -29,6 +29,8 @@ public:  //interface
     {
         return Control(getByText(text));
     };
+    void clickOk();
+    void clickCancel();
 
 public:  // class interface
     static HWND waitFor(
@@ -51,11 +53,15 @@ private: // internal class helpers
         HWND parent, 
         const wchar_t *className, 
         const wchar_t *title);
+    static void waitUntil(size_t timeout, std::function<bool()> onStep);
 
 private: // internal helpers
-    bool waitUntil(int ctrlId, size_t timeout);
+    bool waitUntilCreate(int ctrlId, size_t timeout);
     HWND getById(int ctrlId);
     HWND getByText(const std::string &text);
+
+protected: // protected helpers
+    void clickBtn(int id);
 };
 
 } // GUI namespace

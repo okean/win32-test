@@ -17,8 +17,17 @@ public:
 public:  // interface
     void dontSave();
 
+private: // internal structs
+    enum CtrlsId
+    {
+        dontSaveTxt
+    };
+
 private: // internal typedefs
     typedef Util::Win::GUI::Button Button;
+
+private: // internal helpers
+    static const std::string ctrlIdToString(CtrlsId id);
 
 private: // member variables
     Button _dontSaveBtn;
