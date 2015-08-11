@@ -18,12 +18,18 @@ public:
 public:  // public typedefs
     typedef std::function<void(bool, const std::string &)>  OnCondition;
     typedef OnCondition                                     OnSaved;
+    typedef OnCondition                                     OnReplaceAll;
     typedef Util::Win::GUI::Edit                            Edit;
 
 public:  // interface
     void saveAs(const std::string &path, OnSaved);
     void write(const std::string &text);
     std::string read();
+    void replaceAll(
+        const std::string &findWhat,
+        const std::string &replaceWith,
+        bool matchCase,
+        OnReplaceAll);
     void exitWithoutSaving();
 
 private: // private structs
@@ -34,7 +40,8 @@ private: // private structs
         Save        = 3,
         SaveAs      = 4,
         Exit        = 7,
-        Document    = 15
+        Document    = 15,
+        Replace     = 23
     };
 
 private: // member variables

@@ -3,6 +3,7 @@
 #include <atlbase.h>
 #include <atlwin.h>
 #include <functional>
+#include <memory>
 
 namespace Util {
 namespace Win {
@@ -38,6 +39,20 @@ public:  // class interface
         const std::string &title,
         size_t timeout);
     static const std::string & dialogClass();
+    template <class Dialog>
+    static void handleDialog(
+        const std::string &title,
+        std::function<void(std::shared_ptr<Dialog>)> onDialog)
+    {
+        if (Dialog d = waitFor(dialogClass(), title, timeout))
+        {
+            onDialog(std::make_shared<Dialog>(d));
+        }
+        else
+        {
+            onDialog(std::shared_ptr<Dialog>{});
+        }
+    };
 
 private: // internal structs
     struct WindowInfo

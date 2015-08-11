@@ -1,6 +1,7 @@
 #include "MainWindow.h"
 #include "SaveAsWindow.h"
 #include "SaveChangesWindow.h"
+#include "ReplaceWindow.h"
 #include <ppltasks.h>
 
 using namespace WIN32TEST::Notepad::GUI;
@@ -31,14 +32,17 @@ void MainWindow::saveAs(const std::string &/*path*/, OnSaved onSaved)
 
         const std::string title{ "Save As" };
 
-        if (SaveAsWindow wnd = Window::waitFor(Window::dialogClass(), title, timeout))
+        handleDialog<SaveAsWindow>(title, [=](SaveAsWindowPtr wnd)
         {
-            onSaved(true, "");
-        }
-        else
-        {
-            onSaved(false, "Could not find '" + title + "' window");
-        }
+            if (wnd)
+            {
+                onSaved(true, "");
+            }
+            else
+            {
+                onSaved(false, "Could not find '" + title + "' window");
+            }
+        });
     });
 }
 
@@ -54,6 +58,38 @@ std::string MainWindow::read()
     return _document.getText();
 }
 
+void MainWindow::replaceAll(
+    const std::string &findWhat,
+    const std::string &replaceWith,
+    bool matchCase,
+    OnReplaceAll onReplaceAll)
+{
+    create_task([=]()
+    {
+        PostMessage(WM_COMMAND, MAKEWPARAM(Replace, 0), 0);
+
+        const std::string title{ "Replace" };
+
+        handleDialog<ReplaceWindow>(title, [=](ReplaceWindowPtr wnd)
+        {
+            if (wnd)
+            {
+                wnd->replaceAll(findWhat, replaceWith);
+
+                ::Sleep(100);
+
+                SendMessage(WM_TIMER);
+
+                onReplaceAll(true, "");
+            }
+            else
+            {
+                onReplaceAll(false, "Could not find '" + title + "' window");
+            }
+        });
+    });
+}
+
 void MainWindow::exitWithoutSaving()
 {
     create_task([=]() // go async
@@ -62,10 +98,13 @@ void MainWindow::exitWithoutSaving()
 
         const std::string title{ "Notepad" };
 
-        if (SaveChangesWindow wnd = Window::waitFor(Window::dialogClass(), title, timeout))
+        handleDialog<SaveChangesWindow>(title, [](SaveChangesWindowPtr wnd)
         {
-            wnd.dontSave();
-        }
+            if (wnd)
+            {
+                wnd->dontSave();
+            }
+        });
     });
 
     ::WaitForSingleObject(_process, INFINITE);

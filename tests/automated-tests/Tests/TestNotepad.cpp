@@ -41,6 +41,25 @@ TEST(Notepad, WriteReadText)
     EXPECT_EQ(input, text);
 }
 
+TEST(Notepad, ReplaceAll)
+{
+    ASSERT_NE(nullptr, mainWindow);
+
+    Event event;
+
+    mainWindow->replaceAll("Some", "Any", true, [&](bool succeeded, const std::string &errMsg)
+    {
+        EXPECT_TRUE(succeeded);
+        EXPECT_EQ("", errMsg);
+
+        EXPECT_EQ("Any text", mainWindow->read());
+
+        event.set();
+    });
+
+    EXPECT_TRUE(event.wait(timeout));
+}
+
 TEST(Notepad, SaveAs)
 {
     Event event;
