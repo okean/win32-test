@@ -3,6 +3,7 @@
 #include <util/Win/GUI/Window.h>
 #include <util/Win/GUI/Button.h>
 #include <util/Win/GUI/Edit.h>
+#include <util/Win/GUI/CheckBox.h>
 #include <memory>
 
 namespace WIN32TEST {
@@ -18,10 +19,12 @@ public:
 public:  // interface
     void setFindWhat(const std::string &value);
     void setReplaceWith(const std::string &value);
+    void tickMatchCase();
     void clickReplaceAll();
     void replaceAll(
         const std::string &what,
-        const std::string &with);
+        const std::string &with,
+        bool matchCase);
 
 private: // internal structs
     enum CtrlsId
@@ -33,15 +36,17 @@ private: // internal structs
     };
 
 private: // internal typedefs
-    typedef Util::Win::GUI::Edit    Edit;
-    typedef Util::Win::GUI::Button  Button;
+    typedef Util::Win::GUI::Edit        Edit;
+    typedef Util::Win::GUI::Button      Button;
+    typedef Util::Win::GUI::CheckBox    CheckBox;
 
 private: // internal helpers
 
 private: // member variables
-    Edit    _findWhat;
-    Edit    _replaceWith;
-    Button  _replaceAll;
+    Edit        _findWhat;
+    Edit        _replaceWith;
+    Button      _replaceAll;
+    CheckBox    _matchCase;
 };
 
 typedef std::shared_ptr<ReplaceWindow> ReplaceWindowPtr;

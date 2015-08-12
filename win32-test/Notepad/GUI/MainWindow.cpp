@@ -74,7 +74,7 @@ void MainWindow::replaceAll(
         {
             if (wnd)
             {
-                wnd->replaceAll(findWhat, replaceWith);
+                wnd->replaceAll(findWhat, replaceWith, matchCase);
 
                 ::Sleep(100);
 

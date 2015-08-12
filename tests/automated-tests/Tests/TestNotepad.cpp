@@ -32,7 +32,7 @@ TEST(Notepad, WriteReadText)
 {
     ASSERT_NE(nullptr, mainWindow);
 
-    const std::string input{ "Some text" };
+    const std::string input{ "Some some text" };
 
     mainWindow->write(input);
 
@@ -52,7 +52,7 @@ TEST(Notepad, ReplaceAll)
         EXPECT_TRUE(succeeded);
         EXPECT_EQ("", errMsg);
 
-        EXPECT_EQ("Any text", mainWindow->read());
+        EXPECT_EQ("Any some text", mainWindow->read());
 
         event.set();
     });
