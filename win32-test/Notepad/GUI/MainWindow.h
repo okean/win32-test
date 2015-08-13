@@ -9,6 +9,12 @@ namespace WIN32TEST {
 namespace Notepad {
 namespace GUI {
 
+enum class Page
+{
+    Portrait, 
+    Landscape
+};
+
 class MainWindow : public Util::Win::GUI::Window
 {
 public:
@@ -19,6 +25,7 @@ public:  // public typedefs
     typedef std::function<void(bool, const std::string &)>  OnCondition;
     typedef OnCondition                                     OnSaved;
     typedef OnCondition                                     OnReplaceAll;
+    typedef OnCondition                                     OnSetPageOreintation;
     typedef Util::Win::GUI::Edit                            Edit;
 
 public:  // interface
@@ -30,6 +37,7 @@ public:  // interface
         const std::string &replaceWith,
         bool matchCase,
         OnReplaceAll);
+    void setPageOrientation(Page page, OnSetPageOreintation);
     void exitWithoutSaving();
 
 private: // private structs
@@ -39,6 +47,7 @@ private: // private structs
         Open        = 2,
         Save        = 3,
         SaveAs      = 4,
+        PageSetup   = 5,
         Exit        = 7,
         Document    = 15,
         Replace     = 23

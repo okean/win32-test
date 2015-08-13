@@ -13,6 +13,7 @@
   <ItemGroup>
     <ClInclude Include="Application.h" />
     <ClInclude Include="Notepad\GUI\MainWindow.h" />
+    <ClInclude Include="Notepad\GUI\PageSetupWindow.h" />
     <ClInclude Include="Notepad\GUI\ReplaceWindow.h" />
     <ClInclude Include="Notepad\GUI\SaveAsWindow.h" />
     <ClInclude Include="Notepad\GUI\SaveChangesWindow.h" />
@@ -22,6 +23,7 @@
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="Notepad\GUI\MainWindow.cpp" />
+    <ClCompile Include="Notepad\GUI\PageSetupWindow.cpp" />
     <ClCompile Include="Notepad\GUI\ReplaceWindow.cpp" />
     <ClCompile Include="Notepad\GUI\SaveAsWindow.cpp" />
     <ClCompile Include="Notepad\GUI\SaveChangesWindow.cpp" />

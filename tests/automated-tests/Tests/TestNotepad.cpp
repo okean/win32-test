@@ -60,6 +60,23 @@ TEST(Notepad, ReplaceAll)
     EXPECT_TRUE(event.wait(timeout));
 }
 
+TEST(Notepad, SetPageOrientation)
+{
+    ASSERT_NE(nullptr, mainWindow);
+
+    Event event;
+
+    mainWindow->setPageOrientation(Page::Landscape, [&](bool succeeded, const std::string &errMsg)
+    {
+        EXPECT_TRUE(succeeded);
+        EXPECT_EQ("", errMsg);
+
+        event.set();
+    });
+
+    EXPECT_TRUE(event.wait(timeout));
+}
+
 TEST(Notepad, SaveAs)
 {
     Event event;

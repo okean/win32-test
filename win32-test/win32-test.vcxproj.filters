@@ -31,6 +31,9 @@
     <ClInclude Include="Notepad\GUI\ReplaceWindow.h">
       <Filter>Notepad\GUI</Filter>
     </ClInclude>
+    <ClInclude Include="Notepad\GUI\PageSetupWindow.h">
+      <Filter>Notepad\GUI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -50,6 +53,9 @@
       <Filter>Notepad\GUI</Filter>
     </ClCompile>
     <ClCompile Include="Notepad\GUI\ReplaceWindow.cpp">
+      <Filter>Notepad\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Notepad\GUI\PageSetupWindow.cpp">
       <Filter>Notepad\GUI</Filter>
     </ClCompile>
   </ItemGroup>

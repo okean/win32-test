@@ -17,6 +17,7 @@
     <ClCompile Include="Win\GUI\Button.cpp" />
     <ClCompile Include="Win\GUI\CheckBox.cpp" />
     <ClCompile Include="Win\GUI\Edit.cpp" />
+    <ClCompile Include="Win\GUI\RadioButton.cpp" />
     <ClCompile Include="Win\GUI\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -27,6 +28,7 @@
     <ClInclude Include="Win\GUI\CheckBox.h" />
     <ClInclude Include="Win\GUI\Control.hpp" />
     <ClInclude Include="Win\GUI\Edit.h" />
+    <ClInclude Include="Win\GUI\RadioButton.h" />
     <ClInclude Include="Win\GUI\Window.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

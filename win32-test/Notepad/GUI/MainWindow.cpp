@@ -2,6 +2,7 @@
 #include "SaveAsWindow.h"
 #include "SaveChangesWindow.h"
 #include "ReplaceWindow.h"
+#include "PageSetupWindow.h"
 #include <ppltasks.h>
 
 using namespace WIN32TEST::Notepad::GUI;
@@ -85,6 +86,43 @@ void MainWindow::replaceAll(
             else
             {
                 onReplaceAll(false, "Could not find '" + title + "' window");
+            }
+        });
+    });
+}
+
+void MainWindow::setPageOrientation(Page page, OnSetPageOreintation onSetPageOreintation)
+{
+    create_task([=]()
+    {
+        PostMessage(WM_COMMAND, MAKEWPARAM(PageSetup, 0), 0);
+
+        const std::string title{ "Page Setup" };
+
+        handleDialog<PageSetupWindow>(title, [=](PageSetupWindowPtr wnd)
+        {
+            if (wnd)
+            {
+                if (page == Page::Portrait)
+                {
+                    wnd->setPortrait();
+                }
+                else if (page == Page::Landscape)
+                {
+                    wnd->setLandscape();
+                }
+
+                wnd->clickOk();
+
+                ::Sleep(100);
+
+                SendMessage(WM_TIMER);
+
+                onSetPageOreintation(true, "");
+            }
+            else
+            {
+                onSetPageOreintation(false, "Could not find '" + title + "' window");
             }
         });
     });

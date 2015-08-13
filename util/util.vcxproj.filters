@@ -18,6 +18,9 @@
     <ClCompile Include="Win\GUI\CheckBox.cpp">
       <Filter>Win\GUI</Filter>
     </ClCompile>
+    <ClCompile Include="Win\GUI\RadioButton.cpp">
+      <Filter>Win\GUI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Event.h" />
@@ -38,6 +41,9 @@
       <Filter>Win\GUI</Filter>
     </ClInclude>
     <ClInclude Include="Win\GUI\CheckBox.h">
+      <Filter>Win\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Win\GUI\RadioButton.h">
       <Filter>Win\GUI</Filter>
     </ClInclude>
   </ItemGroup>
