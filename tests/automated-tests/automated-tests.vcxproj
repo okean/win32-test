@@ -71,6 +71,14 @@
     <PreBuildEvent>
       <Message>Start unit tests</Message>
     </PreBuildEvent>
+    <PreLinkEvent>
+      <Command>
+      </Command>
+    </PreLinkEvent>
+    <PreLinkEvent>
+      <Message>
+      </Message>
+    </PreLinkEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -82,7 +90,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(SolutionDir);$(SolutionDir)3rd-party\gtest\include\;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir);$(SolutionDir)3rd-party\;$(SolutionDir)3rd-party\gtest\include\;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -92,6 +100,20 @@
       <AdditionalLibraryDirectories>$(SolutionDir)3rd-party\lib\$(PlatformToolset)\$(Platform)\$(Configuration)\;$(SolutionDir)lib\$(PlatformToolset)\$(Platform)\$(Configuration)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>gtest.lib;util.lib;win32-test.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PreLinkEvent>
+      <Command>
+      </Command>
+    </PreLinkEvent>
+    <PreLinkEvent>
+      <Message>
+      </Message>
+    </PreLinkEvent>
+    <PreBuildEvent>
+      <Command>"$(OutDir)unit-tests.exe"</Command>
+    </PreBuildEvent>
+    <PreBuildEvent>
+      <Message>Start unit tests</Message>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
